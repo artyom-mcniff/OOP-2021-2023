@@ -46,6 +46,7 @@ public class Loops extends PApplet {
 	public void draw() {
 		switch (mode) {
 			case 0:
+			
 				background(0);
 				int bars = (int) (mouseX / 20.0f);
 				float w = width / (float) bars;
@@ -65,10 +66,12 @@ public class Loops extends PApplet {
 					float x = map(i, 0, squares, 0, width);
 					rect(x, x, h, h);
 					rect((width - h) - x, x, h, h);
+					
 				}
-			}
 				break;
-			case 2:
+			}
+				
+			case 2:{
 				background(255);
 				int circles = (int) (mouseX / 20.0f);
 				offset += (mouseY / 100.0f);
@@ -83,7 +86,35 @@ public class Loops extends PApplet {
 						circle(x, y, d);
 					}
 				}
+				break;
+			}
+			case 3:{
+				background(0);
+				if (mouseX < width / 2){
+					noStroke();
+					fill(0, 255, 255);
+					rect(50, 50, width/2, height);
 
+				}
+				else{
+					noStroke();
+					fill(0, 255, 255);
+					rect(450, 450, width, height);
+				}
+				break;
+			}
+			case 4:{
+				background(0);
+				int circles = mouseX;
+				for (int i = 0; i < circles; i++){
+					float c = map(i, 0, width, 0, 175);
+					float d = map(i, 0, width, 0, 250);
+					fill(c, 255, 255);
+					circle(width/2, height/2, d);
+				}
+					
+				break;
+			}
 				// map(a,b,c,d,e);
 				// a = inputvalue
 				// b - c - start and end of the first range
