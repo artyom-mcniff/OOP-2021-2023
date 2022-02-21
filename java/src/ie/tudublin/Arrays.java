@@ -1,6 +1,6 @@
 package ie.tudublin;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import processing.core.PApplet;
 
@@ -65,9 +65,10 @@ public class Arrays extends PApplet {
 
     public void draw()
     {
-
+        
         background(0);
         colorMode(HSB);
+        /*
         float w = width / (float)rainfall.length;
         noStroke();
         for(int i = 0 ; i < rainfall.length ; i ++)
@@ -81,6 +82,32 @@ public class Arrays extends PApplet {
             textAlign(CENTER, CENTER);
             text(months[i], x + (w / 2), height - 50);
         }
+        */
+        /*
+        stroke(255);
+        for (int i = 1; i < rainfall.length; i++){
+            float y1 = map(rainfall[i-1], 0, rainfall[maxIndex], 0, height);
+            float y2 = map(rainfall[i], 0, rainfall[maxIndex], 0, height);
+            float x1 = map(i-1, 0, rainfall.length, 0, width);
+            float x2 = map(i, 0, rainfall.length, 0, width);
+            line(x1, y1, x2, y2);
+        }
+        */
+        float sum = 0;
+        for (int i = 0; i < rainfall.length; i++){
+            sum += rainfall[i];
+        }
+        noStroke();
+        float lastAngle = 0;
+        for (int i = 0; i < rainfall.length; i++){
+            
+            fill(map(i, 0, rainfall.length, 0, 255), 255, 255);
+            float angle = map(rainfall[i], 0, sum, 0, TWO_PI);
+            arc(width/2, height/2, 400, 400, lastAngle, lastAngle + angle);
+            lastAngle += angle;
+
+        }
     }
     
+
 }
